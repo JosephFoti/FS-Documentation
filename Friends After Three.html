@@ -1,0 +1,2016 @@
+<style>
+  .FATProgDay {
+    display: none;
+  }
+
+  h3.trimester {
+    text-align: center;
+    margin-bottom: -10px;
+  }
+
+  .dayToggle {
+    display: none;
+    opacity: 0;
+  }
+
+  .FATProgModule {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .program {
+    overflow: hidden;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .quarentine {
+    height: 0px;
+    overflow: hidden;
+  }
+
+  a.aButtons {
+
+    text-decoration: none;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    text-align: center;
+  }
+
+  .gTog {
+    width: calc(50% - 30px);
+    text-align: center;
+    float: left;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+
+  a.aButtons {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 25px;
+  }
+
+  .FATLogoWrap {
+    margin-top: 10px;
+  }
+
+  .levelToggle {
+    clear: both;
+    overflow: auto;
+  }
+
+  table.dayToggle {
+    clear: both;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  td.FATday {
+    width: 20%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  table.dayToggle.ls {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  a.aButtons {
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  td.FATday:nth-child(n+2) {
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  td.FATday>a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #a2968a;
+  }
+
+  .toggle1>a.aButtons {
+    color: #ee3124;
+  }
+
+  .toggle2>a.aButtons {
+    color: #256aa0;
+  }
+
+  .toggle1 {
+    background-color: rgba(238, 49, 36, 0.06);
+  }
+
+  .toggle2 {
+    background-color: rgba(37, 106, 160, 0.2);
+  }
+
+  .FATProgModule {
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  h1.label {
+    color: #676767;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(251, 212, 209, 0.69);
+    margin-top: 15px;
+    letter-spacing: 5px;
+  }
+
+  h1.label2 {
+    color: #676767;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(131, 170, 201, 0.37);
+    margin-top: 15px;
+    letter-spacing: 5px;
+  }
+
+  table.progBrief {
+    width: 100%;
+  }
+
+  td.progItem:nth-child(1) {
+    width: 80%;
+    padding: 0 5px;
+  }
+
+  td.progItem:nth-child(2) {
+    width: 20%;
+    padding: 0 5px;
+    vertical-align: bottom;
+    text-align: right;
+  }
+
+  .FATdayActive>a {
+    color: #676767 !important
+  }
+
+  .infoTitle {
+    margin-bottom: 15px;
+    margin-top: 40px;
+    border-bottom: 1px solid rgba(237, 20, 61, 0.18);
+    padding-bottom: 5px;
+  }
+
+  .infoBlurb.infoSp {
+    margin-top: 20px !important;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+  }
+
+  .infoColumn {
+    width: 45%;
+    padding: 2.5%;
+    float: left;
+  }
+
+  .FATr.fr3 {
+    width: 100%;
+  }
+
+  .quarentine:last-child {
+    margin-bottom: 10px;
+  }
+
+  table.progBrief {
+    margin-top: 10px;
+  }
+
+  ul.FATlist>:first-child {
+    margin-left: -25px;
+    margin-top: 5px
+  }
+
+  @media screen and (max-width:720px) {
+    .infoColumn {
+      width: 95%;
+      padding: 0 2.5%;
+      float: left;
+    }
+    .infoBlock {
+      margin-top: 25px;
+    }
+  }
+
+  @media screen and (min-width:979px) {
+    h2.progTitle {
+      font-size: 30px !important;
+    }
+  }
+
+
+
+  .infoColumnWrap {
+    clear: both;
+    overflow: auto;
+    border-top: 1px solid #ee3124;
+  }
+
+  .infoWrap {
+    margin-top: 50px;
+  }
+
+
+
+  .infoBlurb {
+    line-height: 22px;
+    margin-top: 10px;
+  }
+
+  h4.progFee {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .infoColumn {
+    padding-top: 1%;
+  }
+
+  ul.FATlist>li {
+    list-style: none;
+    margin-left: -15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: fit-content;
+    border-bottom: 1px solid rgba(215, 215, 215, 0.49);
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  ul.FATlist>li:nth-child(5n+1) {
+    list-style: none;
+    border-bottom: none
+  }
+
+  .soon {
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-width: 2px 0 2px 0;
+    border-style: dotted;
+    border-color: #e1e0de;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-left: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+  }
+
+
+  @media screen and (max-width:980px) and (min-width:500px) {
+    .soon {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+
+  @media screen and (max-width:499px) {
+
+    h3.soon {
+      line-height: 24px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 20px !important;
+    }
+
+
+    h2.soon {
+      line-height: 26px;
+    }
+
+    h2.soon>a {
+      font-size: 20px;
+    }
+
+    .FATProgModule {
+      margin: 0px;
+      width: 100%;
+    }
+
+    tr.progRow {
+      display: table-row;
+    }
+
+    h2.progTitle {
+      font-size: 20px !important;
+      margin: 10px 0px 3px;
+      line-height: 24px;
+      font-weight: 400;
+      padding: 0px 10px !important;
+    }
+
+    h5.progAges {
+      margin: 0px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    h1.label {
+      line-height: 30px;
+      padding-bottom: 20px;
+    }
+
+    td.progItem {
+      width: 100% !important;
+      text-align: center;
+      padding: 0px !important;
+      float: left;
+    }
+
+    h4.progIns {
+      font-weight: 300 !important;
+      line-height: 20px;
+    }
+
+
+  }
+
+  h2.soon>a {
+
+    text-decoration: none;
+    color: #ee3124;
+    cursor: pointer;
+  }
+
+  td.progItem {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width:500px) {
+    img.pull-left.imgNice {
+      width: 100%;
+      max-height: max-content !important;
+    }
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/easing/EasePack.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
+
+<script>
+  var daysL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  var daysS = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri'];
+
+  function Abriviator() {
+    if ($(window).width() > 500) {
+      if ($('.FATday[data-day="1"]').children('a').html() !== daysL[0]) {
+        for (i = 1; i < 6; i++) {
+          var e = $('.FATday[data-day=' + i + ']').children('a');
+          $(e).html(daysL[i - 1]);
+        }
+
+      }
+
+    } else {
+      if ($('.FATday[data-day="1"]').children('a').html() !== daysS[0]) {
+        for (i = 1; i < 6; i++) {
+          var e = $('.FATday[data-day=' + i + ']').children('a');
+          $(e).html(daysS[i - 1]);
+        }
+
+      }
+
+    }
+
+  }
+
+
+  $(window).resize(function() {
+    Abriviator()
+  });
+
+  $('document').ready(function() {
+    Abriviator()
+
+
+
+    var theHeight = '50px';
+
+    function hider() {
+
+      TweenLite.to($('.OpenAccoridian').children('.quarentine'), 1, {
+        css: 'height:0px',
+        ease: Sine.easeOut
+      });
+      $('.OpenAccoridian').removeClass('OpenAccoridian');
+
+    }
+
+
+
+    var paradox = 0;
+    var isItSafe = true;
+
+    function playItSafe() {
+      isItSafe = true;
+    }
+    var prev = 0;
+
+    $('.gTog').click(function() {
+      if ($('.dayToggle').is(':hidden')) {
+        function go() {
+          $('.dayToggle').css('display', 'table');
+        }
+        TweenLite.to($('.dayToggle'), 1, {
+          css: 'opacity:1;',
+          ease: Power3.easeInOut,
+          onStart: go
+        });
+      }
+
+      if ($(this).attr('class') == 'toggle1 gTog') {
+        $('.dayToggle').addClass('ls');
+        if ($('.dayToggle').hasClass('ms')) {
+          $('.dayToggle').removeClass('ms');
+        }
+      } else {
+        $('.dayToggle').addClass('ms');
+        if ($('.dayToggle').hasClass('ls')) {
+          $('.dayToggle').removeClass('ls');
+        }
+      }
+      if ($('.dayToggle').is(':visible')) {
+        var e = $('.FATdayActive').attr('data-day');
+
+        if ($(this).attr('class') !== prev && isItSafe == true) {
+          isItSafe = false;
+
+          if ($('.dayToggle').hasClass('ls')) {
+
+
+            if ($('.active')) {
+              $('.active').addClass('onOut').removeClass('active');
+              TweenLite.to($('.onOut'), .25, {
+                opacity: 0,
+                ease: Power3.easeInOut,
+                onComplete: end
+              });
+
+              function end() {
+                $('.onOut').css('display', 'none').removeClass('onOut');
+              }
+            }
+            $('.FATProgsWrap').append($('.FATProgDay[data-day=' + e + '][data-class="0"]'));
+
+            $('.FATProgDay[data-day=' + e + '][data-class="0"]').css({
+              display: 'block',
+              opacity: '0'
+            }).addClass('active');
+            TweenLite.to($('.FATProgDay[data-day=' + e + '][data-class="0"]'), .5, {
+              opacity: 1,
+              delay: .3,
+              ease: Power3.easeInOut,
+              onComplete: playItSafe
+            });
+
+          } else {
+            if ($('.active')) {
+
+              $('.active').addClass('onOut').removeClass('active');
+              TweenLite.to($('.onOut'), .25, {
+                opacity: 0,
+                ease: Power3.easeInOut,
+                onComplete: end
+              });
+
+              function end() {
+                $('.onOut').css('display', 'none').removeClass('onOut');
+              }
+
+            }
+            $('.FATProgsWrap').append($('.FATProgDay[data-day=' + e + '][data-class="1"]'));
+
+            $('.FATProgDay[data-day=' + e + '][data-class="1"]').css({
+              display: 'block',
+              opacity: '0'
+            }).addClass('active');
+            TweenLite.to($('.FATProgDay[data-day=' + e + '][data-class="1"]'), .5, {
+              opacity: 1,
+              delay: .3,
+              ease: Power3.easeInOut,
+              onComplete: playItSafe
+            });
+          }
+
+        }
+      }
+      prev = $(this).attr('class');
+      hider();
+    })
+
+    $('.FATday').click(function() {
+      var e = $(this).attr('data-day');
+      if (paradox !== e && isItSafe == true) {
+        isItSafe = false;
+        $('.FATdayActive').removeClass('FATdayActive');
+        $(this).addClass('FATdayActive');
+        if ($('.dayToggle').hasClass('ls')) {
+          if ($('.active')) {
+            $('.active').addClass('onOut').removeClass('active');
+            TweenLite.to($('.onOut'), .25, {
+              opacity: 0,
+              ease: Power3.easeInOut,
+              onComplete: end
+            });
+
+            function end() {
+              $('.onOut').css('display', 'none').removeClass('onOut');
+            }
+
+          }
+          $('.FATProgsWrap').append($('.FATProgDay[data-day=' + e + '][data-class="0"]'));
+
+          $('.FATProgDay[data-day=' + e + '][data-class="0"]').css({
+            display: 'block',
+            opacity: '0'
+          }).addClass('active');
+          TweenLite.to($('.FATProgDay[data-day=' + e + '][data-class="0"]'), .5, {
+            opacity: 1,
+            delay: .3,
+            ease: Power3.easeInOut,
+            onComplete: playItSafe
+          });
+
+        } else {
+          if ($('.active')) {
+            $('.active').addClass('onOut').removeClass('active');
+            TweenLite.to($('.onOut'), .25, {
+              opacity: 0,
+              ease: Power3.easeInOut,
+              onComplete: end
+            });
+
+            function end() {
+              $('.onOut').css('display', 'none').removeClass('onOut');
+            }
+          }
+
+          $('.FATProgsWrap').append($('.FATProgDay[data-day=' + e + '][data-class="1"]'));
+
+          $('.FATProgDay[data-day=' + e + '][data-class="1"]').css({
+            display: 'block',
+            opacity: '0'
+          }).addClass('active');
+          TweenLite.to($('.FATProgDay[data-day=' + e + '][data-class="1"]'), .5, {
+            opacity: 1,
+            delay: .3,
+            ease: Power3.easeInOut,
+            onComplete: playItSafe
+          });
+        }
+
+        hider();
+        paradox = e;
+      }
+    })
+
+    // On click of the day, check if lowerschool or middleschool is selected. if a day has already been chosen, transition from the one grade to the other maintaining the day data. On click of day, quickly render the information by displaying as block, but invisible. detect height per block, make the program wraper that height. on
+
+
+    $('.program').click(function() {
+      //var g = $(this);
+      //if ($(window).width()<500) {
+      //setTimeout(function() {
+      //   $('html, body').animate({
+      //    scrollTop: $(g).offset().top
+      //    }, 500);
+      //},1000);
+      //}
+
+
+      if ($(this).hasClass('OpenAccoridian')) {
+        hider();
+      } else {
+        hider();
+        $(this).addClass('OpenAccoridian');
+
+        TweenLite.to($(this).children('.quarentine'), 1, {
+          css: 'height:inherit',
+          ease: Sine.easeOut
+        });
+
+      }
+
+    })
+
+
+  })
+</script>
+
+
+<div class="FATwrap">
+  <div class="FATr fr1" style="text-align:center;">
+    <div class="FATLogoWrap" style="width:60%;margin-left:20%">
+      <img src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/27/misc/misc_194597.png" style="max-height:175px;">
+    </div>
+    <h2 class="soon"><a href="https://www.friendsseminary.org/page/summer-friends-registration">registration now open</a></h2>
+    <h3 class="trimester">Trimester 1 | September 11 - November 30</h3>
+    <h3 style="text-align: left;font-size: 19px;line-height: 24px;font-weight: 400;margin: 28px;">
+      Friends After Three offers three trimesters of unique after school programs that enrich a student’s day with fun and learning. Whether you are an artist or an athlete, a young chef or an emerging singer-songwriter, or just looking for a quiet space to tackle homework, F.A.T. has the perfect match for you every day of the week! Sign up is by trimester. Daily drop-ins are available. See the More Info section at the bottom of the page for the answers to all your F.A.T. questions. <strong>Select a division and a day of the week to learn about our after school programs. When you have made your selection click <a href="https://www.friendsseminary.org/page/summer-friends-registration">here</a> to register online.</strong></h3>
+  </div>
+
+  <div class="FATr fr2">
+    <div class="FATProgModule">
+
+      <div class="levelToggle">
+        <div class="toggle1 gTog">
+          <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!" style="text-decoration: none;font-size: 24px;font-weight: 800;">LOWER SCHOOL</a>
+        </div>
+        <div class="toggle2 gTog">
+          <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!" style="text-decoration: none;font-size: 24px;font-weight: 800;">MIDDLE SCHOOL</a>
+        </div>
+      </div>
+
+      <table class="dayToggle">
+        <tbody>
+          <tr>
+
+            <td class="FATday" data-day="1">
+              <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!">Monday</a>
+            </td>
+            <td class="FATday" data-day="2">
+              <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!">Tuesday</a>
+            </td>
+            <td class="FATday" data-day="3">
+              <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!">Wednesday</a>
+            </td>
+            <td class="FATday" data-day="4">
+              <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!">Thursday</a>
+            </td>
+            <td class="FATday" data-day="5">
+              <a href="https://www.friendsseminary.org/page/student-life/friends-after-three#!">Friday</a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="FATProgsWrap">
+
+        <div class="FATProgDay" data-day="1" data-class="0">
+
+          <h1 class="label">Monday | Lower School</h1>
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Cartooning</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 1-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Nicole Parcher, Visiting Artist</h4>
+              <div class="progBlurb">Whether it’s a zine, a chapter from that graphic novel you’ve been working on, or a good old-fashioned comic book, Nicole will help you bring your vision to life. Learn to combine original ideas with words and images from video games, television
+                and the internet to produce a unique artistic style.</div>
+              <h4 class="progFee">Workshop Fee $225</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Clay World</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+
+              <h4 class="progIns">With Jorge Cruz, Character Sculptor</h4>
+              <div class="progBlurb">Using special modeling clay, instructors from Miami Beach’s Clay World will help students create figurines, animals, people, monsters and more! All creations built during class can be taken home. You can go to <a href="clayworld.org">clayworld.org</a> to see for yourself
+                some of the creative projects to come!</div>
+              <h4 class="progFee">Workshop Fee $400</h4>
+
+            </div>
+          </div>
+
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Juggling and the Art of Manipulation</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4
+							</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <div class="progBlurb">Taught by professional entertainer and educator Harrison Kramer, “Juggling and Manipulation” is a class for anyone interested in vastly improving their concentration, hand eye-coordination, timing and skill acquisition ability. Students will learn the ancient arts of juggling and manipulation by studying a wide array of skill toys and professional circus props that have inspired curiosity and amazement for many hundreds and even thousands of years.</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Tennis with Children’s Athletic Training School</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Be part of this innovative program that allows us to offer tennis instruction right here at Friends! Perfected by veteran tennis professionals and child education specialists, CATS lessons and exercises are carefully tailored to support children’s physical and motor skill development. Children will learn how to swing, volley and use proper footwork. With a focus on fair play and positive attitude, students will play real games each week.</div>
+              <h4 class="progFee">Workshop Fee $450</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">TEKintellect Amazing Machines</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-2</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Build exciting mechanized machines from Lego components including motors and remote-controlled infrared activated components. Models include Hummers, dune buggies, airplanes, carousels, windmills, Ferris wheels, elevators and many others. Students will learn the scientific principles underlying these machines, including centrifugal and centripetal forces, power transmission, potential and kinetic energies, torque, inertia and angular momentum. Experience hands-on, multi-sensory, fun-filled experimental learning which helps develop creativity, organization, imagination and teamwork.</div>
+              <h4 class="progFee">Workshop Fee $400</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Wearable Art with a Mission</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 4</h5>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Nora Chavooshian</h4>
+              <div class="progBlurb">We’ll learn about a variety of printing, dying, airbrushing and fiber techniques to design t-shirts with a purpose. We’ll research and decide on the organization of our choice, selling our shirts to raise funds for that mission.</div>
+              <h4 class="progFee">Workshop Fee $250</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">F.A.T. Funhouse</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Too many fun F.A.T. Choices? Can’t decide what class to take? Well now you don’t have to! This program offers free-choice activities in a nurturing, creative and educationally stimulating environment. Everyday choices will include art
+                activities, cooking, Legos, block-building and outdoor play. Expect surprise visits from your favorite F.A.T. teachers. </div>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Grade 3 and 4 students can jump start their homework! This program will provide students with the help and structure they need to complete their assignments.</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="FATProgDay" data-day="2" data-class="0">
+          <h1 class="label">Tuesday | Lower School</h1>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">BSNY Xtreme Football</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <div class="progBlurb">Kick off the school year with a spirited drive toward the end zone! Whether our field is the Outer Courtyard or the new Sky Field, “touch-tackle” rules will ensure safety and excitement while we run, block and pass for yards. This is an all-weather class so we’ll sweat it out on hot afternoons, dodging falling sycamore leaves, and tear through cold November puddles. Fun is only a first down day away!</div>
+              <h4 class="progFee">Program Fee $375</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">In the Art Room</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+
+
+              <h4 class="progIns">With Nora Chavooshian, Artist and Designer</h4>
+              <div class="progBlurb">Start with a mess and end up with art! In this workshop, containing a combination of 2D and 3D projects, you will learn how to build creations such as toys, sculptures and life-like models, as well as paint and draw with opaque and transparent mediums including tie-dye! By using multiple materials you’ll discover that there are way more than three dimensions to your creativity!</div>
+              <h4 class="progFee">Material Fee $250</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Super Scientists</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">This trimester the Super Scientists will investigate, imagine and create through the exploration of Chemistry! We will put the scientific method to the test as we experiment with liquids to create radical reactions and super substances each week that fizz and foam! We will explore the magical world of bubbles and scientists will engage in challenges such as making the biggest bubble or tallest bubble tower.  Science is always full of surprises and we can’t wait to share all of these exciting experiments and more with our SUPER SCIENTISTS!</div>
+              <h4 class="progFee">Program Fee $325</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Soccer</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-2</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Warren Salandy, Friends P.E. Teacher and Coach</h4>
+              <div class="progBlurb">Join Friends Soccer Coach Warren as he introduces young players to the game of Soccer. This program will focus on individual skill, fitness and sportsmanship, and will provide an opportunity for children to be challenged through fun games and team interaction. Let’s get kicking!</div>
+              <h4 class="progFee">Program Fee $350</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Tinkering Tuesdays</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Judith Seidel, Technology Integrator</h4>
+              <div class="progBlurb">Students will gain programming and designing skills through independent explorations. Possible projects include constructing Scratch games and animations with scrolling backgrounds and variables, designing fold-up houses for a cutting machine and creating a small community with them, coding geometric designs for embroidery, or creating a light-up costume for Halloween.</div>
+              <h4 class="progFee">Program Fee $425</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">F.A.T. Funhouse</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Too many fun F.A.T. Choices? Can’t decide what class to take? Well now you don’t have to! This program offers free-choice activities in a nurturing, creative and educationally stimulating environment. Everyday choices will include art
+                activities, cooking, Legos, block-building and outdoor play. Expect surprise visits from your favorite F.A.T. teachers.</div>
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Grade 3 and 4 students can jump start their homework every day of the week. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="FATProgDay" data-day="3" data-class="0">
+          <h1 class="label">Wednesday | Lower School</h1>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Architecture</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Nora Chavooshian, Sculptor</h4>
+              <div class="progBlurb">We’ll design and build models of different structures like houses, furniture and even theater sets using wood, plaster, cardboard, sticks and natural fibers. We’ll explore how color, texture and shape make us feel in different environments, and create our own worlds of unique buildings.</div>
+              <h4 class="progFee">Workshop Fee $250</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Blading</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Matt Schlee</h4>
+              <div class="progBlurb">One of the safest sports around and a proven workout. FATsters have the opportunity to join the blading craze by learning the moves from an “inline” pro! Basic skating instruction will include striding, turning, stopping, crossovers and much more. Limited enrollment. Skates, pads and helmets required.</div>
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">BSNY Operation Obstacles</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-2</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <div class="progBlurb">Join Basketball Stars of New York and bring out your inner Ninja Warrior. Coaches will set up various challenges using physical activities such as walking, climbing, crawling and maintaining balance. Students must cross all of these obstacles to reach the end of the course. The game is not about the end result, but about the fun of facing and conquering the obstacle course. The obstacles will be chosen to help children develop their coordination and other physical skills. This class will give participants an opportunity to learn new techniques and understand more about their physical abilities.</div>
+              <h4 class="progFee">Workshop Fee $375</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Parkour Adventure</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Movement Creative</h4>
+
+              <div class="progBlurb">Want an after school program that combines creativity with outdoor physical activity? Or maybe your child is already a parkour enthusiast and wants to hone their skills? Either way our Parkour Adventure series is right for them. Perhaps our most aptly named class, each session is its own Parkour Adventure. We adventure out of Friends School and use class time as an active exploration of the surrounding environment. The series starts with a stronger emphasis on learning and developing fundamental movement skills and build into our students discovering and creating their own possibilities for creative movement and creating runs and challenges for themselves and others. Class will end at 5 PM.</div>
+              <h4 class="progFee">Workshop Fee $450</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Roald Dahl Scene On Stage Part 1</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 2-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Child’s Play NY</h4>
+              <div class="progBlurb">Join us as we explore the wild and wondrous worlds of our favorite children’s author! We rehearse a fully staged production of Roald Dahl's <i>The Witches</i> and delve into acting technique, comedic timing and character development. Song and spoken-word poetry also by Dahl will augment our rehearsal process. Class culminates in a final performance in February. Two Trimester commitment. Class will end at 5 PM.</div>
+              <h4 class="progFee">Workshop Fee $425</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">F.A.T. Funhouse</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Too many fun F.A.T. Choices? Can’t decide what class to take? Well now you don’t have to! This program offers free-choice activities in a nurturing, creative and educationally stimulating environment. Everyday choices will include art
+                activities, cooking, Legos, block-building and outdoor play. Expect surprise visits from your favorite F.A.T. teachers. </div>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Grade 3 and 4 students can jump start their homework every day of the week. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="FATProgDay" data-day="4" data-class="0">
+
+          <h1 class="label">Thursday | Lower School</h1>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Basketball Stars of NY</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-2</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+
+              <div class="progBlurb">Basketball Stars are back at Friends to provide you with the best basketball instruction from the top coaches in the city! Join our after school program and learn how to play the game the right way while participating in weekly games. The
+                program is carefully constructed to teach you the right way to shoot, defend, rebound and much more. Coaches from Basketball Stars include former Division I College players. Don’t miss out on the chance to be the next Basketball Star of
+                NY!</div>
+              <h4 class="progFee">Workshop Fee $375</h4>
+
+            </div>
+          </div>
+
+
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Cooking up a Story</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Ashley Shaw</h4>
+              <div class="progBlurb">Roll up those sleeves, fasten those aprons, but wait — we can’t forget to read! Children will be able to explore the world of cooking through a single story. This F.A.T. phenomenon brings stories to life, transforming into tasty, sweet and yummy eats. Join Ashley for some cooking with a literary twist!</div>
+              <h4 class="progFee">Workshop Fee $125</h4>
+            </div>
+
+          </div>
+
+
+
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Parkour Fundamentals</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 2-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Movement Creative</h4>
+              <div class="progBlurb">Parkour Fundamentals is perfect whether you are trying parkour for the first time or if you want to continue to develop your movement skills. This class is all about developing kids’ abilities to safely practice parkour by themselves or with friends. We cover an entire skill arc each class. We teach risk assessment and technique while working to improve balance, coordination, control and awareness through jumping, crawling, climbing, rolling and vaulting. Each class will take a different fundamental movement skill through a variety of drills, challenges, activities and games. Class will end at 5 PM.</div>
+              <h4 class="progFee">Workshop Fee $450</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Superhero Yoga</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-3</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Karma Kids</h4>
+              <div class="progBlurb">Join some of your favorite superheroes for an action-packed yoga class! We’ll go through important training to strengthen our bodies. We’ll explore our own super powers through fun yoga games and activities, and we might even have a chance to save our city from some real bad guys. Each week we will meet at headquarters to learn our assignment. We’ll also learn to fly! Costumes are encouraged. Please come dressed as your favorite superhero!</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">F.A.T. Funhouse</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Too many fun F.A.T. Choices? Can’t decide what class to take? Well now you don’t have to! This program offers free-choice activities in a nurturing, creative and educationally stimulating environment. Everyday choices will include art activities, cooking, Legos, block-building and outdoor play. Expect surprise visits from your favorite F.A.T. teachers.</div>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 3-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Grade 3 and 4 students can jump start their homework every day of the week. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="FATProgDay" data-day="5" data-class="0">
+          <h1 class="label">Friday | Lower School</h1>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Acro Yoga</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Karma Kids</h4>
+              <div class="progBlurb">Acro Yoga combines acrobatics with yoga to bend, stretch, twist, stack and fly! Kids will learn how to safely “fly” each other and support each other through strength, focus, connection and communication. Partner and group acrobatics and being “flown” by the instructors will be practiced in each class. Kids will build confidence and experience full body strengthening through the poses. This fun experience is for anyone who likes to play!</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+
+            </div>
+          </div>
+
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Chess Club</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Peter Barkman, Chess Master</h4>
+              <div class="progBlurb">Open to players of all levels. Beginners will be introduced to the fundamentals of the game, including basic strategy and tactics. More advanced students will study and learn correct opening strategies, middle game planning and basic end
+                game theory. Children will also be taught how to read and write chess notation.
+              </div>
+              <h4 class="progFee">instructor Fee $275</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Dodgeball</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 2-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Matt Critchlow, Average Joe</h4>
+              <div class="progBlurb">Finally, a sports game for the masses! Whether you like to charge the line with a CC Sabathia throwing arm or prefer to hide and wait with the sneakiness of a chess master, dodgeball offers fun and excitement to every style of player. We
+                will mix it up by alternating between the three sets of rules: Army, Jailhouse and Elimination.</div>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Magic</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-3</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+
+              <h4 class="progIns">With After School Magic</h4>
+              <div class="progBlurb">Taught by professional entertainer and educator Harrison Kramer, “After School Magic” is a class for anyone interested in honing their critical thinking and presentation skills. By learning to think like a magician, students will discover the skills that make up every conjuror's toolbox such as sleight of hand, psychology, misdirection, secret codes, mental systems and showmanship. Who knows, one of you may just be the greatest magician of our time, waiting to happen.</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Making a Musical</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-1</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Child’s Play NY</h4>
+              <div class="progBlurb">Hop aboard the spinning treehouse with Jack & Annie to find out what quests Merlin wants to take you on! Adventure through history and time and sing songs from the realms of dinosaurs and knights. Class culminates in a final performance devised by the students.</div>
+              <h4 class="progFee">Workshop Fee $400</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">F.A.T. Funhouse</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades K-4</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Too many fun F.A.T. Choices? Can’t decide what class to take? Well now you don’t have to! This program offers free-choice activities in a nurturing, creative and educationally stimulating environment. Everyday choices will include art
+                activities, cooking, Legos, block-building and outdoor play. Expect surprise visits from your favorite F.A.T. teachers.</div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="FATProgDay" data-day="1" data-class="1">
+          <h1 class="label">Monday | Middle School</h1>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Wearable Art with a Mission</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Nora Chavooshian</h4>
+              <div class="progBlurb">We’ll learn about a variety of printing, dying, airbrushing and fiber techniques to design t-shirts with a purpose. We’ll research and decide on the organization of our choice, selling our shirts to raise funds for that mission.</div>
+              <h4 class="progFee">Workshop Fee $250</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Juggling and the Art of Manipulation</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-6</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Taught by professional entertainer and educator Harrison Kramer, “Juggling and Manipulation” is a class for anyone interested in vastly improving their concentration, hand-eye coordination, timing and skill acquisition ability. Students will learn the ancient arts of juggling and manipulation by studying a wide array of skill toys and professional circus props that have inspired curiosity and amazement for many hundreds and even thousands of years.</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Homework getting you down? Now there's an opportunity for students to get a jump start on their homework in a stress-free environment. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+        <div class="FATProgDay" data-day="2" data-class="1">
+          <h1 class="label">Tuesday | Middle School</h1>
+
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">BSNY Xtreme Football</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-6</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Kick off the school year with a spirited drive toward the end zone! Whether our field is the Outer Courtyard or the new Sky Field, “touch-tackle” rules will ensure safety and excitement while we run, block and pass for yards. This is an all-weather class so we’ll sweat it out on hot afternoons, dodging falling sycamore leaves, and tear through cold November puddles. Fun is only a first down day away!</div>
+              <h4 class="progFee">Workshop Fee $375</h4>
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Tinkering Tuesdays</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 5</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">With Judith Seidel, Technology Integrator</h4>
+              <div class="progBlurb">Students will gain programming and designing skill through independent explorations. Possible projects include constructing Scratch games and animations with scrolling backgrounds and variables, designing fold-up houses for a cutting machine and creating a small community with them, coding geometric designs for embroidery, or creating a light-up costume for Halloween.</div>
+              <h4 class="progFee">Program Fee $425</h4>
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Homework getting you down? Now there's an opportunity for students to get a jump start on their homework in a stress-free environment. This program will provide students with the help and structure they need to complete their assignments.</div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        <div class="FATProgDay" data-day="3" data-class="1">
+          <h1 class="label">Wednesday | Middle School</h1>
+
+          <div class="program">
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Programming and Design Thinking</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-6</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Judith Seidel, Technology Integrator</h4>
+              <div class="progBlurb">Through independent projects, students will gain programming and designing skills. Possibilities include using learning the basics of a text based language such as Python, coding the Microbit, and taking advantage of the new features of Scratch 3.0. As they make discoveries, participants will be encouraged to revise and debug their own code and designs and collaborate with their peers. <strong>For this F.A.T. activity, a strong understanding of fundamental programming concepts is required</strong>.</div>
+              <h4 class="progFee">Program Fee $400</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Parkour Adventure</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-6</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+
+              <h4 class="progIns">Movement Creative</h4>
+              <div class="progBlurb">Want an after school program that combines creativity with outdoor physical activity? Or maybe your child is already a parkour enthusiast and wants to hone their skills? Either way our Parkour Adventure series is right for them. Perhaps our most aptly named class, each session is it’s own Parkour Adventure. We adventure out of Friends School and use class time as an active exploration of the surrounding environment. The series starts with a stronger emphasis on learning and developing fundamental movement skills and build into our students discovering and creating their own possibilities for creative movement and creating runs and challenges for themselves and others. Class will end at 5 PM.</div>
+              <h4 class="progFee">Workshop Fee $450</h4>
+
+            </div>
+          </div>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Homework getting you down? Now there's an opportunity for students to get a jump start on their homework in a stress-free environment. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="FATProgDay" data-day="4" data-class="1">
+          <h1 class="label">Thursday | Middle School</h1>
+
+          <div class="program">
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Shakespeare Players: Macbeth | Part 1</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 6-7</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Child's Play NY</h4>
+
+              <div class="progBlurb">When a coven of witches counsel Macbeth, he sets off on a destructive and tragic quest for power. Along the way, queens go mad, kings become ghosts, forests move and daggers float. A thrilling exploration of ambition, fate and magic. In our two-trimester Shakespeare Players class, young people become confident with Shakespeare’s world, language and characters as they learn how to interpret a role with technique and courage. Classically trained professional actors assist the players in their physical, vocal and emotional transformations. Part 2 will be available in the second trimester. Class culminates in a final performance in February.</div>
+              <h4 class="progFee"> Workshop Fee $450</h4>
+
+            </div>
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Monet’s Garden</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-6</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Nicole Parcher</h4>
+
+              <div class="progBlurb">Flowers and gardens have been the subject matter of many great artists throughout history. In this studio art class we will look at Van Gogh’s famous sunflowers, Georgia O’Keefe’s close-ups of flowers and Monet’s impressionist gardens as inspiration to create our own paintings and pastel drawings. Students will get to practice still-life drawings and paintings, as well as do sketches from actual gardens in NYC.</div>
+              <h4 class="progFee">Program Fee $225</h4>
+
+            </div>
+          </div>
+
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Homework Help</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grades 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <div class="progBlurb">Homework getting you down? Now there's an opportunity for students to get a jump start on their homework in a stress-free environment. This program will provide students with the help and structure they need to complete their assignments.</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="FATProgDay" data-day="5" data-class="1">
+          <h1 class="label">Friday | Middle School</h1>
+
+
+          <div class="program">
+
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Dodgeball</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 5</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Matt Critchlow, Average Joe</h4>
+              <div class="progBlurb">Finally, a sports game for the masses! Whether you like to charge the line with a CC Sabathia throwing arm or prefer to hide and wait with the sneakiness of a chess master dodgeball offers fun and excitement to every style of player. We
+                will mix it up by alternating between the three sets of rules—Army, Jailhouse and Elimination.</div>
+
+
+            </div>
+
+
+          </div>
+
+          <div class="program">
+
+
+            <table class="progBrief">
+              <tbody>
+                <tr class="progRow">
+                  <td class="progItem">
+                    <h2 class="progTitle">Acro Yoga</h2>
+                  </td>
+                  <td class="progItem">
+                    <h5 class="progAges">Grade 5-8</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="quarentine">
+              <h4 class="progIns">With Karma Kids</h4>
+              <div class="progBlurb">Acro Yoga combines acrobatics with yoga to bend, stretch, twist, stack and fly! Kids will learn how to safely “fly” each other and support each other through strength, focus, connection and communication. Partner and group acrobatics and being “flown” by the instructors will be practiced in each class. Kids will build confidence and experience full body strengthening through the poses. This fun experience is for anyone who likes to play!</div>
+              <h4 class="progFee">Workshop Fee $325</h4>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="FATr fr3">
+    <div class="infoWrap">
+      <h2 style="margin-bottom:0px;">More Info</h2>
+      <div class="infoColumnWrap">
+
+        <div class="infoColumn Column1">
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">Programs</h3>
+            <div class="infoBlurb infoSp">Early Bird | 7:45-8:25 AM</div>
+            <div class="infoBlurb">Supervised play before school begins</div>
+            <div class="infoBlurb">Breakfast is served</div>
+            <h4 class="progFee">Trimester: $540</h4>
+            <h4 class="progFee">Early Bird Drop-in Fee: $17</h4>
+
+            <div class="infoBlurb infoSp">F.A.T. Activities | 3:10-4:30 PM</div>
+            <div class="infoBlurb">Exciting, diverse activities</div>
+            <div class="infoBlurb">Participate in one to five days per week</div>
+            <ul class="FATlist">
+              <li style="list-style:none;"><strong>Daily Fees:</strong></li>
+              <li>1 Day | $495</li>
+              <li>2 Days | $930</li>
+              <li>3 Days | $1055</li>
+              <li>4 Days | $1205</li>
+              <li>5 Days | $1395</li>
+            </ul>
+            <div class="infoBlurb" style="margin-bottom:10px">Additional workshop fees may apply</div>
+            <h4 class="progFee">F.A.T. Daily Drop-in Fee: $80</h4>
+
+            <div class="infoBlurb infoSp">Extended Day | 4:30-5:30 PM</div>
+            <div class="infoBlurb"><strong>Kindergarten – Grade 1</strong></div>
+            <div class="infoBlurb">Free play, quiet games, arts and crafts</div>
+            <div class="infoBlurb">Nutritious snack is served</div>
+            <div class="infoBlurb"><strong>Grades 2-4</strong></div>
+            <div class="infoBlurb">Homework help with extra support</div>
+            <div class="infoBlurb">Guidence in organization, prioritizing assignments and learning how to answer your own questions</div>
+
+            <ul class="FATlist">
+              <li style="list-style:none;"><strong>Daily Fees:</strong></li>
+              <li>1 Day | $350</li>
+              <li>2 Days | $590</li>
+              <li>3 Days | $730</li>
+              <li>4 Days | $860</li>
+              <li>5 Days | $945</li>
+            </ul>
+
+            <h4 class="progFee">Extended Day and Homework Drop-ins: $36</h4>
+
+          </div>
+        </div>
+
+        <div class="infoColumn Column2">
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">F.A.T. FACTS</h3>
+
+            <div class="infoBlurb">Registrations are due August 27, 2018. Any registrations received after August 27 will be processed only if space remains, and a Late Registration Fee of $25 will be assessed.</div>
+            <div class="infoBlurb">If payment in full is not received prior to the start of the trimester a $25 late fee will be added to your account.</div>
+            <div class="infoBlurb">Phone registrations will not be accepted.</div>
+            <div class="infoBlurb">For your convenience we now accept credit cards: checks are no longer valid.</div>
+            <div class="infoBlurb">Tuition aid is available to those who receive aid for the academic year.</div>
+            <div class="infoBlurb">After September 25, refunds or credits will not be given for changes to enrollment status.</div>
+            <div class="infoBlurb">Classes may be canceled due to insufficient enrollment.</div>
+
+            <h4 class="progFee">Registration Fee $25</h4>
+
+          </div>
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">Late Pick-up </h3>
+            <div class="infoBlurb">If a child is picked up late more than twice in a trimester, the school has the right to refuse to accept that child in the Extended Day Program.</div>
+
+            <h4 class="progFee">Late Pick-up Fee $32</h4>
+
+          </div>
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">Drop-in Info</h3>
+
+            <div class="infoBlurb">Drop-ins are available for Early Bird, F.A.T. Activities and Extended Day.</div>
+            <div class="infoBlurb">Please send a note to your child’s teacher indicating a change in dismissal and that they will be dropping in to afterschool.</div>
+            <div class="infoBlurb">In addition to the dismissal note please fill out our drop-in request form by logging into Campium <a href="https://www.friendsseminary.org/page/summer-friends-registration">here</a>.</div>
+            <div class="infoBlurb">This form must be filled out by 1:30 PM on the day of your drop-in.  We will invoice you with the cost of the class, payment is expected within 7 days of billing. When your child arrives at FAT, we will give them the choices of that days available classes.</div>
+
+          </div>
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">Holidays</h3>
+
+            <div class="infoBlurb">Yom Kippur | September 19</div>
+            <div class="infoBlurb">Fall Break | October 8</div>
+            <div class="infoBlurb">K-6 Parent Conferences | November 15-16</div>
+            <div class="infoBlurb">Thanksgiving Break | November 21-23</div>
+
+            <!-- <div class="infoBlurb">Winter Break | December 22 - January 5 </div>
+            <div class="infoBlurb">Martin Luther King Jr. Day | January 15</div>
+            <div class="infoBlurb">Parent Teacher Conferences | February 15-16</div>
+            <div class="infoBlurb">Presidents’ Day | February 19</div>
+            <div class="infoBlurb">Professional Development Day | February 20</div> -->
+
+            <!-- <div class="infoBlurb">Spring Break | March 19 - 30 </div>
+            <div class="infoBlurb">MS Parent Conferences | April 18-19</div>
+            <div class="infoBlurb">Noon Dismissal | May 25 (No After-School services provided)</div>
+            <div class="infoBlurb">Memorial Day | May 28</div> -->
+
+          </div>
+
+          <div class="infoBlock">
+
+            <h3 class="infoTitle">Questions</h3>
+            <div class="infoBlurb">Contact the Office of Extended Programs
+            <div class="infoBlurb">Phone: 646.979·5065</div>
+            <div class="infoBlurb">Email: <a href="mailto:FAT@friendsseminary.org">FAT@friendsseminary.org</a></div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

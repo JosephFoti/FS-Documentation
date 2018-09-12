@@ -1,0 +1,890 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+
+<script>
+  // var preset = 2;
+  $('#app').ready(function() {
+    // launches pre-load screen
+    $('#app').prepend($('.preLoad'));
+    $('.preLoad').css('display', 'block');
+    $(document).scrollTop(0);
+    $('body').css('overflow-y', 'hidden')
+
+    $('.btn.btn-default.btn-sm').css('display', 'none')
+
+    function getUrlVars() {
+    // Legacy hash parser, issue with external links lead us to discontinue use, but it is still possible.
+    // Hashes would link to a screen with a specified fwd screen. I must have copied this from a stack overflow.
+      var vars = [],hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+      }
+      return vars;
+    }
+
+    preset = getUrlVars()["preset"];
+    return preset;
+
+  })
+
+  $('document').ready(function() {
+
+    $('#column_1_0').ready(function() {
+
+      setTimeout(function() {
+        // wrapped in timeout to allow for bb data acquisition, wrote this before i knew how to write a promise ;)
+
+        // Gets each news section and names them
+        var AllSchool = $('#column_1_0').children().children().first();
+        var LowerSchool = $('#column_1_0').children().next().children().first();
+        var MiddleSchool = $('#column_1_0').children().next().next().children().first();
+        var HighSchool = $('#column_1_0').children().next().next().next().children().first();
+
+
+        // Hide embed element from display
+        $('#column_1_0').children().next().next().next().next().children().first().css("display", "none")
+
+        $(AllSchool).addClass('sP')
+        $(HighSchool).addClass('sP');
+        $(MiddleSchool).addClass('sP');
+        $(LowerSchool).addClass('sP');
+        $(HighSchool).addClass('hsB');
+        $(MiddleSchool).addClass('msB');
+        $(LowerSchool).addClass('lsB');
+        $(AllSchool).addClass('asB')
+        $(AllSchool).addClass('getWidth');
+
+        // ----------- CSS Accessability ------------
+        // adds custom classes into the bb news modules for advanced styling
+        $('.sP').children('div').children('h4').children('a').addClass('newsTitle');
+        $('.newsTitle').parent().addClass('newsTitleWrap');
+        $('.newsTitleWrap').parent().addClass('newsItem');
+        $('.lsB').children('div').children('h4').children('.newsTitle').addClass('lsT')
+        $('.msB').children('div').children('h4').children('.newsTitle').addClass('msT')
+        $('.hsB').children('div').children('h4').children('.newsTitle').addClass('hsT')
+        $('.asB').children('div').children('h4').children('.newsTitle').addClass('asT')
+
+
+        $('#column_1_0').children().wrapAll('<div class="sliderWrap"></div>');
+        $('.sP').each(function() {
+          $(this).children().eq(1).addClass('newsHead')
+        });
+
+        // adds links to resource boards at the bottom of each news item
+        $('.target').parent().eq(0).addClass('rb1').children('h4').children('a').attr('href', 'https://friendsseminary.myschoolapp.com/app/Core#resourceboarddetail/5475')
+        $('.target').parent().eq(1).addClass('rb2').children('h4').children('a').attr('href', 'https://friendsseminary.myschoolapp.com/app/Core#resourceboarddetail/5476')
+        $('.target').parent().eq(2).addClass('rb3').children('h4').children('a').attr('href', 'https://friendsseminary.myschoolapp.com/app/Core#resourceboarddetail/5477')
+
+        // ------------------------- New Tag -------------------------
+        // calculates if a post has been added to the news section within a week, if so the 'new' tag is added.
+        // also checks to see if the total content of a post's short description is wrapped in a div with a data-stopnew attribute
+        // set to true.
+
+        /*
+
+        Example of stopnew ~
+
+        <div data-stopnew="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+        I'll leave a post in the archive titled stop new example for reference.
+
+        */
+
+        var d = new Date;
+        var date2 = d.getDate();
+        var month2 = d.getMonth() + 1;
+        var year2 = d.getYear();
+        var splits = [];
+        var date1 = 0;
+        var month1 = 0;
+        var year1 = 0;
+        var excessDaysInMonth = 0;
+        var daysSince = 0;
+
+        function daysInMonth(month, year) {
+          return new Date(year, month, 0).getDate();
+        }
+        $('.datelabel').each(function() {
+          // Checks all posts for their dates, a hidden value that all of our news content has in its html, and evaluates if the post is new or if the new tag is being prevented.
+          if ($(this).parent().siblings('[data-stopnew]').data('stopnew') !== true) {
+            splits = $(this).text().split('/');
+            date1 = splits[1];
+            month1 = parseInt(splits[0]);
+            year1 = splits[2];
+            if ((month1) !== (month2) && (month2 - month1) < 2) {
+              excessDaysInMonth = (daysInMonth(year1, month1) - date1);
+              daysSince = (excessDaysInMonth + date2);
+            } else if ((month1) == (month2)) {
+              daysSince = (date2 - date1);
+            } else {
+              daysSince = 100;
+            }
+            // dictates number of days a post has to be under to be considered new, change the integer to adjust length.
+            if (daysSince < 8) {
+              $(this).eq(0).parent().prepend('<div class="newTag">NEW</div>');
+            }
+          }
+
+        })
+
+        // ------------------------- End New Tag -------------------------
+
+        // ------------------------- Spotlight change -------------------------
+        /*
+          this snippet was originally for highlighting a specifiy type of post on our feed.
+          it targets the string defined as reg in a post's title and then changes the style
+          of the targeted post. If you are unfamiliar with regular expressions check out this
+          tool, https://regexr.com/.
+        */
+        $('.asB').children('.newsItem').each(function() {
+          var x = $(this).children('h4').children('a').text();
+          var reg = /[Ss]potlight on [Cc]ampus [Rr]edevelopment [Pp]roject/;
+          if (reg.test(x)) {
+            $(this).children('h4').children('a').css({
+              'background-color': '#00B2E5',
+              'box-shadow': '5px 0px 0px #00B2E5, -5px 0px 0px #00B2E5'
+            });
+          }
+        });
+        // ------------------------- End Spotlight change -------------------------
+
+        // ------------------------- Slider Controlls  -------------------------
+
+        var callback = true;
+        var v = 0;
+        v = (($('.getWidth')).width() + 62);
+        $('.aLink').click(function() {
+
+          if (callback) {
+            // Makes sure that animation is complete before taking a new click event.
+            callback = false;
+
+            var e = $(this).attr('data-slide');
+            var m = ($('.sliderWrap').children().eq(e).children().height() + 70)
+
+            // below, this equaiton calculates the distance for the animation, the distance
+            // is relative to the DOM objects original position (0). for all school, marked with
+            // data-slide="0", the equation will always equal 0 and return to the relative postion of 0.
+            // for data-slide="2", the middleschool slide, the equation will return a value that describes
+            // 2 times the width of the news element, (v), and accounts for the margin (15), and the borders of the element (4).
+
+            e = ((e * v * -1) - (15 * e) + (4 * e));
+            TweenLite.to($('.sliderWrap'), 1, {
+              x: e,
+              ease: Power1.easeOut,
+              delay: .2
+            });
+            TweenLite.to($('#column_1_0'), .6, {
+              height: m,
+              ease: Power1.easeInOut,
+              onComplete: callBack
+            });
+
+            function callBack() {
+              callback = true;
+            }
+          }
+
+        })
+
+        // handles relative adjustments of the size of the news items to scroll corretly after resize.
+        // returns to 0 to preserve readable view.
+
+        $(window).resize(function() {
+          if ($(window).width() > 769) {
+            v = (($('.getWidth')).width() + 60);
+            m = (($('.getWidth')).height() + 70);
+            TweenLite.to($('#column_1_0'), .6, {
+              height: m,
+              ease: Power1.easeInOut
+            });
+            TweenLite.to($('.sliderWrap'), .25, {
+              x: 0,
+              delay: .1,
+              ease: Power1.easeInOut
+            })
+          }
+        })
+
+        // Removes preloader.
+        function loadNoMore() {
+          $('.preLoad').css('display', 'none');
+          $('body').css('overflow-y', 'scroll');
+        }
+
+        // animates preloader going out
+        TweenLite.to($('.preLoad'), .1, {
+          opacity: 0,
+          ease: Power3.easeout,
+          onComplete: loadNoMore
+        })
+
+        m = (($('.getWidth')).height() + 70);
+
+        // ------------------------- Slider Controlls -- If hash is defined  -------------------------
+        // the hash triggers a move to the defined board
+        if (preset) {
+          var v = (($('.getWidth')).width() + 62);
+          var m = ($('.sliderWrap').children().eq(preset).children().height() + 70)
+          var e = ((preset * v * -1) - (15 * preset) + (4 * preset));
+
+          $('.sliderWrap').css('transform', 'matrix(1,0,0,1,' + e + ',0)');
+          $('.sliderWrap').parent().css('height', m);
+          return m;
+        };
+
+        TweenLite.to($('#column_1_0'), .6, {
+          height: m,
+          ease: Power1.easeInOut
+        });
+
+        // Removes a pop-up on mobile devices
+        $('.site-mobile-help').css('display', 'none');
+        $('.site-mobile-help').attr('class', '');
+
+        // Adds and animates a scroll to top of page on news category selection
+        $('.aLink').click(function() {
+          if ($(window).width() < 600) {
+            var body = $("html, body");
+            var news = $('#column_1_0');
+            var newsTop = (news.offset().top - 155)
+            $(body).animate({
+              scrollTop: newsTop
+            }, 1000)
+          }
+        })
+
+      }, 1250);
+
+    });
+
+  });
+</script>
+
+<!-- ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] Style!! -->
+
+<style>
+  .FWDarchive {
+    display: none;
+    opacity: 0;
+  }
+
+  .preLoad {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    display: none;
+  }
+
+  margin-top: 45vh;
+
+  /*    [][][][][][][][][][][][][][][][]  ^ PRELOADER ^  [][][][][][][][][][][][][][][][][]   */
+
+  .divSB {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+    padding-bottom: 15px;
+  }
+
+  .newsSB {
+    padding-bottom: 5px;
+  }
+
+  .smSB {
+    text-align: center;
+  }
+
+  .newsHead {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    margin-top: 5px;
+    padding: 0px 10px;
+  }
+
+  .aLink {
+    padding-bottom: 2px;
+    letter-spacing: 2px;
+    background-color: white;
+    border-radius: 20px;
+  }
+
+  .aLink:last-child {
+    margin-bottom: 0px !important;
+  }
+
+  .divSBitem {
+    margin-bottom: 5px;
+  }
+
+  .aLink:focus {
+    outline: none !important;
+  }
+
+  img.pull-left.imgNice {
+    max-width: 100%;
+  }
+
+  .aLink {
+    border: none;
+    background-color: rgba(0, 0, 255, 0);
+  }
+
+  .divSBitem {
+    width: 25%;
+    float: left;
+  }
+
+  .divSB {
+    clear: both;
+    overflow: auto;
+    text-align: center;
+  }
+
+  button.ls.aLink {
+    border-bottom: 2px solid #6597bc;
+    border-radius: 0px;
+  }
+
+  button.ms.aLink {
+    border-bottom: 2px solid #fc6621;
+    border-radius: 0px;
+  }
+
+  button.hs.aLink {
+    border-bottom: 2px solid #a4978c;
+    border-radius: 0px;
+  }
+
+  button.as.aLink {
+    border-bottom: 2px solid #d22630;
+    border-radius: 0px;
+  }
+
+  .divSBitemTop {
+    width: 25%;
+    float: left;
+    text-align: center;
+  }
+
+  .divSBTop {
+    clear: both;
+    overflow: auto;
+  }
+
+  .divSBTopAbr {
+    display: none;
+    clear: both;
+    overflow: auto;
+  }
+
+  @media screen and (min-width:980px) {
+
+    .divSB {
+      display: none;
+    }
+
+  }
+
+  @media screen and (max-width:980px) {
+    .sidebarWrap {
+      clear: both;
+      overflow: auto;
+    }
+
+    .smSB {
+      width: 45%;
+      margin: 2.5%;
+      float: left;
+    }
+
+  }
+
+  .lsB {
+    border: 1px solid #6597bc;
+  }
+
+  .msB {
+    border: 1px solid rgba(252, 102, 33, 0.43);
+  }
+
+  .hsB {
+    border: 1px solid #a4978c;
+  }
+
+  h3.newsHead {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 3px;
+  }
+
+  .hsB>h3.newsHead {
+    box-shadow: 0px 3px 0px #a4978c;
+
+  }
+
+  .asB>h3.newsHead {
+    box-shadow: 0px 3px 0px #d22630;
+
+  }
+
+  .msB>h3.newsHead {
+    box-shadow: 0px 3px 0px #fc6621;
+
+  }
+
+  .lsB>h3.newsHead {
+    box-shadow: 0px 3px 0px #6597bc;
+
+  }
+
+  /*   ---------------------------------------------------------  Division Styles  -----------------------------------------------------   */
+
+  .asB {
+    border: 1px solid #d22630;
+    /* background: rgba(0, 0, 0, 0); */
+  }
+
+  .asB>h3.newsHead {
+    color: #d22630;
+  }
+
+  .hsB>h3.newsHead {
+    color: #a4978c;
+  }
+
+  .msB>h3.newsHead {
+    color: #fc6621;
+  }
+
+  .lsB>h3.newsHead {
+    color: #6597bc;
+  }
+
+  h3.newsHead {
+    margin-bottom: 17.5px !important;
+  }
+
+  span.datelabel {
+    display: none;
+  }
+
+  div.story>h4>a {
+    font-size: 20px;
+    color: #81756c;
+    line-height: 25px;
+  }
+
+  .smSBTitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  a.newsTitle {
+    font-size: 18px;
+    color: #81756c;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 2px;
+  }
+
+  h4.newsTitleWrap {
+    text-align: left;
+    padding-top: 15px;
+  }
+
+  .newsItem {
+    border-bottom: 1px dashed #d9d9d9;
+    margin-bottom: 0px !important;
+    padding-bottom: 20px;
+  }
+
+  /*   -------------------    BGK Fill Style   -------------------   */
+
+  a.newsTitle.lsT {
+    padding: 2px 0px;
+    background: #6597bc;
+    color: white;
+    box-shadow: 5px 0px 0px #6597bc, -5px 0px 0px #6597bc;
+    line-height: 34px;
+  }
+
+  a.newsTitle.msT {
+    padding: 2px 0px;
+    background: #fc6621;
+    color: white;
+    box-shadow: 5px 0px 0px #fc6621, -5px 0px 0px #fc6621;
+    line-height: 34px;
+  }
+
+  a.newsTitle.hsT {
+    padding: 2px 0px;
+    background: #a4978c;
+    color: white;
+    box-shadow: 5px 0px 0px #a4978c, -5px 0px 0px #a4978c;
+    line-height: 34px;
+  }
+
+  a.newsTitle.asT {
+    padding: 2px 0px;
+    background: #d22630;
+    color: white;
+    box-shadow: 5px 0px 0px #d22630, -5px 0px 0px #d22630;
+    line-height: 34px;
+  }
+
+  a.newsTitle {
+    font-weight: 300;
+  }
+
+  .sP {
+    padding: 30px;
+  }
+
+  .sliderWrap {
+    width: calc(100% * 4);
+    clear: both;
+    overflow: auto;
+  }
+
+  div#column_1_0 {
+    overflow: hidden;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+    box-shadow: 0px 0px 0px 0px;
+
+  }
+
+  .sP {
+    width: calc(25% - 10px);
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .onNow {
+    display: block;
+    opacity: 0;
+  }
+
+  .initial {
+    display: block;
+    opacity: 1;
+  }
+
+  @media screen and (max-width:650px) {
+
+    .divSBitem {
+      width: 85%;
+      float: none;
+      margin-left: 7.5%;
+      margin-bottom: 20px;
+    }
+
+    .aLink {
+      font-size: 23px;
+    }
+
+    .divSBTop {
+      display: none
+    }
+
+    .divSBTopAbr {
+      display: block
+    }
+
+    .divSBitem:first-child {
+      margin-top: 10px;
+    }
+
+  }
+
+  .ftImgSm {
+    display: none;
+  }
+
+  @media screen and (max-width:550px) {
+
+    .ftImg {
+      display: none !important;
+    }
+    .ftImgSm {
+      display: block !important;
+    }
+
+  }
+
+  @media screen and (max-width:400px) {
+
+    .aLink {
+      font-size: 18px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    .rb1>.newsTitleWrap>a.newsTitle.lsT {
+      font-size: 14px;
+      padding: 3px 3px;
+      border-width: 3px;
+    }
+    .rb2>.newsTitleWrap>a.newsTitle.msT {
+      font-size: 14px;
+      padding: 3px 3px;
+      border-width: 3px;
+    }
+    .rb3>.newsTitleWrap>a.newsTitle.hsT {
+      font-size: 14px;
+      padding: 5px 3px;
+      border-width: 3px;
+    }
+
+  }
+
+  @media screen and (min-width:992px) {
+
+    div#column_1_0 {
+      width: calc(75% - 30px);
+    }
+
+  }
+
+  /*  In News Item Styles  */
+
+  table.fwdTable>tbody>tr>td {
+    padding: 3px 5px;
+  }
+
+  table.fwdTable {
+    width: 100%;
+  }
+
+  .smSB {
+    clear: both;
+    overflow: auto;
+  }
+
+  .smSBitem {
+    float: left;
+    width: 25%;
+  }
+
+  .smSBTitle {
+    padding: 1px 10px;
+    color: #666;
+    line-height: 21px;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: fit-content;
+    margin-left: 0px;
+    margin-right: auto;
+    margin-top: 5px !important;
+    margin-bottom: 10px;
+  }
+
+  .newsSBitem>a>img {
+    vertical-align: middle;
+    margin: 10px 0;
+  }
+
+  @media screen and (max-width:991px) {
+
+    .smSB {
+      display: none
+    }
+
+    .smSBTitle {
+      display: none;
+    }
+
+  }
+
+  .smSBitem>a>img {
+    max-height: 30px
+  }
+
+  @media screen and (min-width:475px) and (max-width:991px) {
+
+    .newsSB {
+      width: 100%;
+      margin: 0;
+    }
+
+    .newsSBitem {
+      width: 45%;
+      float: left;
+      margin: 0 2.5%;
+    }
+
+    .newsSBitem>a>img {
+      vertical-align: middle;
+      margin: 0;
+    }
+
+  }
+
+  .sideBar {
+    overflow: auto;
+    clear: both;
+  }
+
+  .newsSBTitle {
+    padding: 1px 7px;
+    background: none;
+    color: #0c1727;
+    box-shadow: 0px 3px 0px #d22630;
+    line-height: 34px;
+    font-weight: 500;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 2px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+  }
+
+  #newsTileContent>div>div>div.col-sm-8>h5 {
+    display: none;
+  }
+
+  .newsItem.rb1>.newsTitleWrap {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -20px;
+  }
+
+  .newsItem.rb1 {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-top: -5px;
+    margin-bottom: -30px;
+  }
+
+  .rb1>.newsTitleWrap>a.newsTitle.lsT {
+    padding: 2px 5px;
+    background: #6597bc;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #bfbfbf;
+    line-height: 34px;
+    border: 5px solid white;
+  }
+
+  .newsItem.rb2>.newsTitleWrap {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -20px;
+  }
+
+  .newsItem.rb2 {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-top: -5px;
+    margin-bottom: -30px;
+  }
+
+  .rb2>.newsTitleWrap>a.newsTitle.msT {
+    padding: 2px 5px;
+    background: #fc6622;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #bfbfbf;
+    line-height: 34px;
+    border: 5px solid white;
+  }
+
+  .newsItem.rb3>.newsTitleWrap {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -20px;
+  }
+
+  .newsItem.rb3 {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-top: -5px;
+    margin-bottom: -30px;
+  }
+
+  .rb3>.newsTitleWrap>a.newsTitle.hsT {
+    padding: 2px 5px;
+    background: #a4968b;
+    color: white;
+    box-shadow: 0px 0px 3px 0px #bfbfbf;
+    line-height: 34px;
+    border: 5px solid white;
+  }
+
+  /*  New Tag  */
+
+  .newTag {
+    width: fit-content;
+    height: 100%;
+    background-color: rgba(223, 221, 219, 0.52);
+    color: #d22731;
+    float: right;
+    padding: 5px;
+    font-size: 18px;
+    margin-top: 2px;
+    font-weight: 100;
+    margin-left: 5px;
+  }
+
+  @media screen and (max-width:500px) {
+
+    img.pull-left.imgNice {
+      width: 100%;
+      max-height: max-content !important;
+    }
+
+    .newTag {
+      width: fit-content;
+      height: 100%;
+      background-color: rgba(223, 221, 219, 0.52);
+      color: #d22731;
+      float: left;
+      padding: 5px 5px 5px;
+      font-size: 18px;
+      margin-top: 2px;
+      font-weight: 100;
+      margin-right: 10px;
+      margin-left: -5px;
+    }
+
+    iframe {
+      width: 370px;
+    }
+
+  }
+
+  /*    Image spacing fix for screen controller     */
+
+  .newsItem img {
+    margin-bottom: 18px;
+  }
+
+  /* full new tag disable. Uncomment to remove all new tags from sight. */
+  /*
+  .newTag {
+  display:none;
+  }
+  */
+
+</style>
