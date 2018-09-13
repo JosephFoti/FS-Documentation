@@ -1,0 +1,621 @@
+/* ===== CUSTOM CSS ===== */
+html, body {height:100%;}
+figure{margin: 0;}
+select{max-width: 100%;}
+li {line-height: inherit;}
+blockquote{border-left: 0;}/*removing Bootstrap’s left border on <blockquote>*/
+.text .photos.left, .text .photos.right{max-width: 100%;}/*Fixing Firefox issue of large photos breaking out of column when container is floated*/
+ul.album-list{margin: 0;} /* --- removing margin from UL around media gallery items --- */
+.content .flexslider{-webkit-box-shadow: none;-moz-box-shadow: none;-o-box-shadow: none;box-shadow: none;border: 0;-webkit-border-radius: 0;-o-border-radius: 0;border-radius: 0;background: none;}/*removing carousel default styles*/
+.carousel.gallery-style.flexslider{height: auto !important} /* --- fixing height issue on sidebar gallery --- */
+.carousel.gallery-style.flexslider .flex-viewport{border: 0 !important} /* --- removing default border around image in Sidebar Galleries --- */
+.carousel .slides{list-style: none;} /* --- removing bullets from showing when carousel loads --- */
+.background-carousel .details {opacity: 0}/*hiding carousel details until they transition in, so you don’t see them on page load*/
+.carousel figure{min-height: 0 !important;} /* --- min-height being set by default in the carousel code - causes extra space below banner photos on mobile --- */
+.carousel .flex-direction-nav .flex-disabled{opacity: 0 !important;}/*not showing the back/next arrow when the carousel has nothing to rotate and is disabled*/
+.mini-sitemap ul.collapsed{height: auto;}
+.mini-sitemap .width-7{width: 13%; margin-right: 1%;}
+.mini-sitemap .width-8{width: 11.5%; margin-right: 1%;}
+.menu-type-accordion .sub2:last-child:after,.menu-type-accordion .sub3:last-child:after{padding-bottom: 0px} /* --- extra space at bottom of accordion menu subnav --- */
+.brief-description ul, .long-description ul, .caption ul{list-style: disc inside;} /* --- resetting list style within a brief or long description, caption --- */
+.downloads .subcategory-group > ul{margin: 0;} /* --- removing margin from UL around download
+items --- */
+.email{-ms-word-break: break-all; word-break: break-word; word-break: break-all;}/*breaking long emails so they stay within the container*/
+a[href*="mailto"] {word-wrap: break-word;}/*emails*/
+.fund .chart.top{max-width: 100%;}/*correcting width of annual fund chart when the alignment is set to top*/
+.layout {position: relative; z-index: 0;} /* keeps layout contents from appearing over important lightboxes and banners */
+.carousel {position: relative; z-index: 0;} /* keeps carousel descendants from stacking independent of the carousel itself */
+.mobilemenu {position: relative: z-index: 100;} /* keeps the mobile menu from appearing over the emergency bulletin */
+.fixed-bulletin {position: relative; z-index: 500 !important;} /* keeps the fixed bulletin banner from appearing over the bulletin lightbox */
+
+/* ===== STYLES ===== */
+
+.style-9943 .background-carousel .detail-container .details-viewport {height:auto!Important;}/*hp news*/
+.style-9943 .background-carousel .detail-container {  position: static;} /*hp news*/
+
+
+.style-9957 .flex-viewport{height: auto !important;}/*overriding javascript calculated height because it is cutting off the read more button*/
+
+.style-10380 .flex-viewport, .style-10637 .flex-viewport, .style-14914 .flex-viewport {height:auto!important;}/*hp news carousel*/
+
+/*buttons*/
+.style-10345 A.links-urllink, .style-10346 A.links-urllink, .style-10349 A.links-urllink, .style-10344 A.links-urllink, .style-10347 A.links-urllink {width: 80%;}
+
+#layout_3097 {height:100%;}
+.style-10338 .content.faq li.group {list-style-position:outside; margin-left:20px;} /*edit FAQ expandable list style*/
+.style-10399 .content.events  .text-slide{padding:0 0 0 25px;}/*text carousel - Events ONLY*/
+.style-10399 H4 {margin:0;} /*reset title tag for carousels*/
+.style-10385 .news ul li {margin: 0;} /*remove extra space above counter in photo carousel*/
+html:not(.styler) .style-10038 div.page-title {display:none;} /*hides non-current page titles*/
+.style-10038 hgroup.pagetitle > h1.page-title{display:block!important;} /*shows current page title*/
+
+.style-10338 H4 A {color: #8b8078!important;}/*expandable style open/expanded list*/
+.style-10338 h4.on-state > A {color:#d22630!important;}/*expandable style open/expanded list*/
+.style-10338 h4 A:hover {color: #d22630!important;}/*expandable style closed list*/
+
+#layout_3097 .style-9949  .submenu.level2 {display:none!important;} /*hides main menu dropdown on INT pages*/
+.style-10023 .l1-item:last-child:after{display:none;} /*hide first INT horzt menu pipe*/
+.style-10026 .l1-item:last-child:after{display:none} /*INT l3 menu first pipe*/
+.style-9957 .event-detail:not(.left) {margin-left: 0;} /*removes gap in event carousel*/
+.style-9992 A  {text-decoration:none; display: table-cell; vertical-align: middle; float:left;} /*HP buttons with graphic*/
+.style-9943 .background-carousel .detail-container {text-align: center; margin: 0 auto;} /*HP main carousel*/
+.style-9949 .l1-item:hover:after {content: '';display: block;position: absolute;bottom: -1px; left:0; width: 0px;height: 0px;
+border-top: 7px solid transparent;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 8px solid #fff;} /*main menu hover arrow*/
+.style-10026 .l1-item:first-child > a{padding-left: 0px!important;}/*horizontal nav*/
+.style-10026 .l1-item:first-child .level2{margin-left: 0;}/*removing left margin on horizontal page nav to left align dropdown on first nav item*/
+
+/*---BUTTONS-----*/
+.style-10035 A, .style-10346 A, .style-10349 A, .style-10344 A, .style-10347 A, .style-10345 A {text-decoration:none;} /*HP buttons with graphic*/
+.style-10035 li.group:hover:before, .style-10346 li.group:hover:before, .style-10349 li.group:hover:before, .style-10344 li.group:hover:before, .style-10347 li.group:hover:before, .style-10345 li.group:hover:before  {left:0; right:0;} /*buttons hover state*/
+.style-10367 li.group:hover:before, .style-10370 li.group:hover:before, .style-10371 li.group:hover:before, .style-10368 li.group:hover:before, .style-10369 li.group:hover:before {left:0; right:0;} /*INT No graphic buttons hover state*/
+.style-10071 .athleticteamroster .on-state .player-name-link {color: #D22630;} /*Force color on opened roster items*/
+
+
+
+/*===link carousel hover effect===*/
+.style-9956 .text-slide A.links-imglink {display:block; position:relative;}
+
+.style-9956 .text-slide A.links-imglink:before {content: ''; display: inline-block; position: absolute; top: 45%; left:45%; bottom: 0; right: 0; background-color: transparent; width: 0px; height: 0px; border-radius: 50%; z-index: 300; -webkit-transition: 0.3s linear; -moz-transition: 0.3s linear; -ms-transition: 0.3s linear; -o-transition: 0.3s linear; transition: 0.3s linear;}
+
+.style-9956 .text-slide A.links-imglink:hover:before {background-color: #8b8078;
+/*width: -webkit-calc(100% - 6px); width -moz-calc(100% - 6px); width: calc(100% - 6px); height: -webkit-calc(100% - 6px); height: -moz-calc(100% - 6px); height: calc(100% - 6px); left: 3px; top: 3px; */
+background-color: #8b8078;
+width: -webkit-calc(100% - 5px);
+width: calc(100% - 5px);
+height: -webkit-calc(100% - 5px);
+height: -moz-calc(100% - 5px);
+height: calc(100% - 5px);
+left: 2px;
+top: 2px;
+opacity: 1;}
+
+.style-9956 .text-slide A.links-imglink:hover:after{opacity:1;}
+
+
+.style-9956 .text-slide A.links-imglink:after{
+content: '[ MORE ]';
+display: inline-block;
+position: absolute;
+top: 46%;
+left: 0;
+width:100%;
+height:100%;
+text-align:center;
+z-index:500;
+color:#fff;
+font-size:14px;
+line-height:20px;
+font-weight:bold;
+opacity:0;
+-webkit-transition: opacity .45s ease-in-out;
+-moz-transition: opacity .45s ease-in-out;
+-ms-transition: opacity .45s ease-in-out;
+-o-transition: opacity .45s ease-in-out;
+ transition: opacity .45s ease-in-out;
+}
+
+.style-10062 .schedule-site {float: none;}
+
+
+
+/* ===== MEDIA QUERIES ===== */
+/* --- Full Desktop --- */
+@media(min-width:1200px){
+
+.style-9950 .link-image { margin: 0 5px 0 24px;} /*social media*/
+
+}/* --- END full desktop --- */
+
+/* --- Small Desktop --- */
+@media(max-width:1199px) and (min-width:980px){
+.span9 .facultystaffdirectory .table-cell,
+.span8 .facultystaffdirectory .table-cell,
+.span7 .facultystaffdirectory .table-cell,
+.span6 .facultystaffdirectory .table-cell,
+.span5 .facultystaffdirectory .table-cell,
+.span4 .facultystaffdirectory .table-cell,
+.span9 .departmentpicker .table-cell,
+.span8 .departmentpicker .table-cell,
+.span7 .departmentpicker .table-cell,
+.span6 .departmentpicker .table-cell,
+.span5 .departmentpicker .table-cell,
+.span4 .departmentpicker .table-cell,
+.span9 .athleticteampicker .table-cell,
+.span8 .athleticteampicker .table-cell,
+.span7 .athleticteampicker .table-cell,
+.span6 .athleticteampicker .table-cell,
+.span5 .athleticteampicker .table-cell,
+.span4 .athleticteampicker .table-cell  {display: inline-block;} /* --- allowing dropdowns to wrap on tablet --- */
+
+
+.style-9943 .background-carousel .crl-details { word-wrap: break-word;  margin: 10% auto;} /*hp main slider*/
+
+.style-9950 .link-image { margin: 0 5px 0 5px;} /*social media*/
+.style-9953 {margin-top: 25px;} /*header tagline*/
+.style-9949 .l1-item {margin: 0 0 0 22px;} /*main nav item spacing*/
+.style-9943 {padding-top: 35%;} /*hp carousel detail spacing*/
+.style-9956 .carousel .text-slide {margin: 0px 10px 0 10px;} /*spaces hp link carousel*/
+.style-9956 A.links-urllink {margin: 10px 0 0 0;} /*link carousel*/
+.style-10035 A.links-urllink {width: 76%;} /*HP buttons*/
+.style-10012 .day a {padding: 2px 5px 5px 5px; height: 21px; width: 20px;} /*calendar date picker*/
+.style-10062 .schedule-site, .style-10062 a.print-button {float: none;}
+
+}/* --- END Small Desktop --- */
+
+/* --- Tablet --- */
+@media(max-width:979px) and (min-width:768px){
+.facultystaffdirectory .table-cell, .departmentpicker .table-cell, .athleticteampicker .table-cell{display: inline-block;} /* --- allowing dropdowns to wrap on tablet --- */
+
+.style-9950 {float:none; text-align:center;}/*social media*/
+.style-9953 {margin:15px 0 15px;} /*header tagline*/
+.style-9953 div.content-wrap {font-size: 14px;} /*header*/
+.style-9954 {padding: 30px 20px 16px 0;} /*logo*/
+.style-9950 {border-left: 0px;}/*social media*/
+.style-9950 {padding-left: 0; margin-left: -154%;} /*social media*/
+.style-9943 {padding-top: 48%;} /*hp carousel detail spacing*/
+.style-9956 A.links-urllink {font-size: 14px;} /*link carousel*/
+.style-9943 .background-carousel h4.crl-title {line-height: normal;} /*hp main carousel title*/
+.style-10017 {display: none;} /*hides menu region*/
+.style-9941 { border:0px;}/*INT grey menu*/
+.style-9956 .carousel .text-slide {margin: 0px 25px 0 25px;} /*spaces hp link carousel*/
+.style-9956 A.links-urllink {margin: 10px 0 0 0;} /*link carousel*/
+.style-10035 A.links-urllink {font-size: 20px; width: 66%;} /*HP buttons*/
+.style-9996 A.links-urllink {font-size: 15px;} /*hp footer quicklinks*/
+.style-9947 {font-size: 15px; line-height: 25px;} /*footer address*/
+.style-9942 {min-height: 600px;} /*carousel region min height*/
+.style-9956 .carousel.flex-horizontal .flex-direction-nav .flex-prev, .style-9957 .carousel.flex-horizontal .flex-direction-nav .flex-prev{left:-25px;}/*realign carousel arrows*/
+.style-9956 .carousel.flex-horizontal .flex-direction-nav .flex-next, .style-9957 .carousel.flex-horizontal .flex-direction-nav .flex-next{right:-25px;}/*realign carousel arrows*/
+.style-10340 .content {word-break: break-word;} /*stops email addresses breaking out*/
+.style-10012 .day a{border-radius: 0; padding: inherit; height: auto; width: auto;}/*calendar picker*/
+.style-10012 .day-header span {padding: 0;font-size: 13px;text-align: left;text-transform: inherit;margin: 0;}/*date picker headers*/
+H2 {font-size: 26px!important;} /*shrink all header sizes*/
+.style-10338 li.group {    list-style: outside none disc;    margin-left: 15px;} /*bullet lists*/
+html:not(.styler) .game .schedule-vs, html:not(.styler) .game .opponents{width: auto;}/*game schedule*/
+.style-10062 .schedule-site {float: none;}
+
+.style-9942{min-height: 600px;} /*hp main slider*/
+.style-9943 .background-carousel .crl-details { word-wrap: break-word;  margin: 0 auto;} /*hp main slider*/
+
+}/* --- END Tablet --- */
+
+/* --- Mobile --- */
+@media(max-width:767px){
+.mini-sitemap .width-7, .mini-sitemap .width-8{width: 100%; margin-right: 0;}
+.facultystaffdirectory .table, .facultystaffdirectory .table-row{display: block;}/*removing display: table & table-row*/
+.facultystaffdirectory .table-cell, .departmentpicker .table-cell{display: inline-block; max-width: 100%;} /* --- allowing dropdowns to wrap on mobile & not break out of box --- */
+
+.style-9954 {padding: 25px 0; text-align: center;} /*logo*/
+.style-9953 {text-align: center; margin: 0 0 25px;} /*tagline*/
+.style-9950 {border-left: 0; padding-left: 0; float:none; text-align:center;} /*social media*/
+.style-9950 div.content-wrap { height: auto; display: block; padding: 10px 0;} /*social media*/
+.style-9943 {padding-top: 43%;} /*carousel title*/
+.style-9943 .background-carousel .controls .control-prev, .style-9943 .background-carousel .controls .control-next {top: 50%; opacity: 1!important;} /*carousel arrows*/
+.style-9943 .background-carousel .detail-container {position: static;} /*HP main carousel arrow placement*/
+.style-9943 .background-carousel .pager {top: auto; bottom: -33px;}/*hp main *carousel pager*/
+
+.style-9956 .carousel.flex-horizontal .flex-direction-nav .flex-prev, .style-9956 .carousel.flex-horizontal .flex-direction-nav .flex-next {display:none;}/*hide link carousel arrows*/
+.style-9957 .carousel.flex-horizontal .flex-direction-nav .flex-prev, .style-9957 .carousel.flex-horizontal .flex-direction-nav .flex-next {display:none;}/*hide event carousel arrows*/
+
+.style-9956 .carousel .text-slide {margin: 0 3px 0 3px;} /*hp link carousel*/
+.style-9956 A.links-urllink {font-size: 13px;} /*link carousel URL*/
+.style-9956 .text-slide A.links-imglink:after {top: 39%;} /*link hover state*/
+.style-9989 .caption {transform: none; -webkit-transform: none; -ms-transform: none;} /*tweets and quicklinks*/
+.style-9989 .photo img {margin: 0 10px 10px 0; display: inline-block; float: left;} /*tweets and quicklinks*/
+.style-10014 {margin: 0 0 20px; text-align: center;} /*twitter embed*/
+.style-10035 {margin-bottom:20px;}/*HP buttons*/
+.style-9999 {margin: 15px 0;} /*spaces out address*/
+.style-9943 .background-carousel .crl-caption:before {left: 0; right: 0; margin: 0 auto; text-align: center;}/*caption dots*/
+.style-9943 .background-carousel .crl-details {max-width: 88%;} /*hp carousel details*/
+.style-10017 {display: none;} /*hides menu region*/
+.style-9941 { border:0px;}/*INT grey menu*/
+.style-10380 .carousel h4.crl-title {display: none;} /*hides page banner title*/
+.style-10038 .page-title-level-2 {font-size: 28px;} /*page title*/
+
+.style-10012 .day a {margin: 5px auto;} /*center date picker*/
+.style-10035 A.links-urllink {    font-size: 17px;} /*resize HP buttons*/
+
+
+H2 {font-size: 26px!important; word-wrap: break-word;} /*shrink all header sizes*/
+.style-10338 li.group {list-style: outside none disc;    margin-left: 15px;} /*bullet lists*/
+.style-10038 .page-title-level-3 {font-size: 35px; word-wrap: break-word;} /*page titles*/
+.style-10012 .day a {    padding: 0;} /*remove overlap on calendar*/
+.style-10012 .day-header span {margin: 0px 0;    font-size: 12px;} /*calendar*/
+.style-10003 {word-wrap: break-word;} /*calendar*/
+.style-10124 {word-wrap: break-word;} /*faculty*/
+.style-10002 .large-calendar-grid ol.calendar-header li{padding: 0px; font-size: 15px;} /*calendar*/
+.style-10062 .schedule-site, .style-10062 a.print-button {float: none;}
+html:not(.styler) .game .schedule-vs, html:not(.styler) .game .opponents{width: auto;}/*game schedule*/
+
+.style-14914 .carousel.flex-horizontal .flex-direction-nav .flex-next, .style-14914 .carousel.flex-horizontal .flex-direction-nav .flex-prev {display:none!Important;}/*hide news slider arrows*/
+.style-9942{min-height: 600px;} /*hp main slider*/
+.style-9943 .background-carousel .crl-details { word-wrap: break-word;  margin: 0 auto;} /*hp main slider*/
+
+
+/*news carousel*/
+.style-14914 .carousel .slides li {  display: inline-block;  float: none!important;}
+.style-14914 .carousel .slides, .carousel .flex-direction-nav {  float: none!important;  width: auto!Important;   transform: none!important;  transition: initial;}
+.style-14914 .carousel.flexslider .slides>li { min-height:initial; /*display:block!important;*/ margin:0 0 15px; width:100%!important;} /*ticket 81666 - only show 4 - commented out display block*/
+.style-14914 .carousel .text-slide {  min-width: 100%; margin:0; min-height:inherit!important;}
+.style-14914 .carousel.flexslider {  padding: 0 0;}
+.style-14914 ul.flex-direction-nav {  display: none;}
+.style-14914 .flex-viewport {max-height: initial!important; height:auto!Important}
+.style-14914 img.link-image {  min-width: initial!Important;  max-width: 215px; display:block;   margin: 0 auto!important;}
+/*news carousel*/
+
+.style-14914 li.group:nth-child(n+5) {display:none !important;} /*ticket 81666 - only show 4*/
+.style-14914 .crl-pager {display:none !important;} /*ticket 81666 - only show 4 - hide pager*/
+
+.style-10075 .event-detail .readmore {left: 0;}
+
+}/* ---END Mobile --- */
+
+/*INTERNET EXPLORER FIX*/
+@media screen and (min-width:0\0) {.style-9956 .text-slide A.links-imglink:before {top: 0; left: 0;}}
+
+/*iphone FIX*/
+@media only screen and (max-device-width : 667px) {
+iframe#twitter-widget-i1441743931326497636{max-width:322px!important;}/*twitter*/
+}
+
+.responsive-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 0px;
+	height: 0;
+	overflow: hidden;
+}
+.responsive-container iframe {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*  Menubar Adjustment */
+body {overflow-x:hidden;}
+
+@media screen and (max-width:1199px) and (min-width:980px) {
+.level1 {
+width:120%;
+}
+
+.l1-item {
+margin-left: 20px !important;
+}
+
+.style-9950 {
+     border-left: 2px solid #60606000 !important;
+
+}
+
+
+
+li.menu-item.menu-item-26678.l1-item.level-1.has-sub-menu {
+    margin-left: 0px !important;
+}
+
+}
+
+
+
+/*  JOE'S AREA   */
+.nameplate {
+  max-height: 180px;
+  max-width: 100%;
+  margin-left:-14px;
+}
+.musOpen {
+  display: block !important;
+  position: absolute;
+}
+.musIntro {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: futura;
+}
+
+.musMainContent {
+  display: block;
+}
+
+.musArticleWrap {
+  max-width: 80%;
+  margin-left:10%;
+  margin-right:10%;
+  float: left;
+  position: relative;
+  display: none;
+  margin-top: 60px;
+
+}
+.musWrapIt {
+  position: relative;
+  float: left;
+  max-width:66%;
+}
+
+.musImgWrap {
+  position: relative;
+  float: right;
+  width: 33%;
+  text-align:center;
+}
+
+.musText {
+  float: left;
+
+}
+
+.musLrg {
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.musGallWrap {
+    /* position: relative; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    height: 13vw;
+}
+
+.musGallItem {
+    width: 16%;
+    position: relative;
+    float: left;
+    margin-left: .33%;
+    margin-right: .33%;
+   border-radius:100%;
+
+
+}
+
+.musTitleWrap {
+height: 100%;
+text-align: center;
+}
+
+.musGallImg {
+    max-height: 100%;
+    max-width: 100%;
+    opacity: 1;
+   border-radius:100%;
+}
+
+.musGallItem:hover {
+
+
+transition: .8s;
+cursor: pointer;
+
+}
+@media screen and (max-width:550px) {
+  .musGallItem{
+    width:30%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+margin-left: 1.5%;
+    margin-right: 1.5%;
+  }
+}
+
+.musArticleWrap {
+    margin-top: 15px;
+}
+
+.shr {
+  max-height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2.musIntro {
+    margin-bottom: 34px;
+}
+
+.musSmallName {
+display: none;
+}
+
+@media screen and (max-width:450px)
+{
+.musImgWrap {
+    position: relative;
+    float: right;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.nameplate {
+display:none;
+}
+
+.musSmallName {
+display:block;
+   font-size: 34px;
+    text-align: center;
+}
+}
+
+.startUp {
+  display: block !important;
+}
+
+.musSmallName {
+    color: #8c8a87;
+    font-weight: 500;
+}
+
+.musGallItemWrapper {
+    height: 100%;
+}
+
+/* listen/learn  */
+
+
+
+.bigWrap {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+.left{
+  float:left;
+  position: relative;
+  width: 44%;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  text-align: center;
+  opacity: .75;
+
+
+}
+
+.right{
+  float:right;
+  position: relative;
+  width: 45%;
+  margin-right:2.5%;
+  margin-left:2.5%;
+  text-align: center;
+  opacity: .75;
+}
+
+.musHomeMainImg {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 25vw;
+    display: block;
+    max-width: 400px;
+}
+
+.musMainIcon {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 20vw;
+}
+
+.listenTxt {
+    font-size: 16px !important;
+    line-height: 20px !important;
+}
+
+.middle {
+    width: 2px;
+    height: 25vh;
+    float: right;
+    position: relative;
+    background-color: rgba(138, 129, 129, 0.35);
+    margin-top: 10%;
+}
+
+.musLeftIcon {
+  height:200px
+  margin-top: 50px;
+}
+
+@media screen and (max-width:550px) {
+
+.middle {
+display:none !important;
+}
+
+.left {
+width:100%;
+margin-right:0px;
+margin-left:0px;
+}
+
+.right {
+width:100%;
+margin-right:0px;
+margin-left:0px;
+}
+
+.musMainIcon {
+max-width: 60%;
+float:none;
+}
+
+.musHomeMainImg {
+	max-width:70%;
+}
+
+.left {
+opacity:1;
+}
+
+.right {
+opacity:1;
+}
+
+}
+
+
+
+li.menu-item.menu-item-26678.l1-item.level-1.has-sub-menu {
+    margin-left: 0px !important;
+}
+}
+
+
+
+/* HOMEPAGE SPACING FIX */
+
+@media screen and (max-width:1200px) {
+
+.style-9946 {
+    padding-bottom: 5px !important;
+}
+
+}
+
+div#page_col_33681_0_2 {
+    height: 342px;
+}
+
+/*  END JOE'S AREA   */
+
+.responsiveRapper {
+	overflow:hidden;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	position:relative;
+}
+.responsiveRapper iframe,
+.responsiveRapper object,
+.responsiveRapper embed {
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	position:absolute;
+}
